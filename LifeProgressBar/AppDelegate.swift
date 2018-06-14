@@ -14,20 +14,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var _beginTI:TimeInterval = 0
-    var _newStartTI:TimeInterval = 0
+    
+    var _born:Double = 0
+    var _newStart:Double = 0
     var _denominator:Double = 0
     
+    func timeInterval2Day(ti: TimeInterval) -> Int {
+        return Int(ti / (24 * 3600))
+    }
+    
     func updateProgress() {
-        let nowTI:TimeInterval = Date().timeIntervalSince1970
-        let numerator = (nowTI - _beginTI) / (24 * 3600)
+        let now = Date().timeIntervalSince1970
+        let numerator = now - _born
         let ratio = 100 * numerator / _denominator
         
-        let numeratorInt = Int(numerator)
-        let denominatorInt = Int(_denominator)
-        
         DispatchQueue.main.async {
-            self.statusItem.title = String(numeratorInt) + "/" + String(denominatorInt) + "  " + String(format: "%.3f", ratio) + "%"
+            self.statusItem.title = String(self.timeInterval2Day(ti: numerator)) + "/" + String(self.timeInterval2Day(ti: self._denominator)) + "  " + String(format: "%.3f", ratio) + "%"
         }
     }
     
@@ -43,14 +45,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector:#selector(calendarDayDidChange), name:.NSCalendarDayChanged, object:nil)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         
-        let begin = "1994-04-19"
-        let newStart = "2074-04-19"
+        let born = "1994-04-19 00:00:00"
+        let newStart = "2074-04-19 00:00:00"
         
-        _beginTI = dateFormatter.date(from: begin)!.timeIntervalSince1970
-        _newStartTI = dateFormatter.date(from: newStart)!.timeIntervalSince1970
-        _denominator = (_newStartTI - _beginTI) / (24 * 3600)
+        _born = dateFormatter.date(from: born)!.timeIntervalSince1970
+        _newStart = dateFormatter.date(from: newStart)!.timeIntervalSince1970
+        _denominator = _newStart - _born
         
         updateProgress()
         
@@ -58,9 +60,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        // Nope
     }
-
-
+    
 }
 
