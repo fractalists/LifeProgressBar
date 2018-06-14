@@ -25,7 +25,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let numeratorInt = Int(numerator)
         let denominatorInt = Int(_denominator)
-        statusItem.title = String(numeratorInt) + "/" + String(denominatorInt) + "  " + String(format: "%.3f", ratio) + "%"
+        
+        DispatchQueue.main.async {
+            self.statusItem.title = String(numeratorInt) + "/" + String(denominatorInt) + "  " + String(format: "%.3f", ratio) + "%"
+        }
     }
     
     @objc func calendarDayDidChange() {
