@@ -11,11 +11,47 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
-
+    @IBOutlet weak var statusMenu: NSMenu!
+    
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var _beginTI:TimeInterval = 0
+    var _newStartTI:TimeInterval = 0
+    var _denominator:Double = 0
+    
+    func updateProgress() {
+        let nowTI:TimeInterval = Date().timeIntervalSince1970
+        let numerator = (nowTI - _beginTI) / (24 * 3600)
+        let ratio = 100 * numerator / _denominator
+        
+        let numeratorInt = Int(numerator)
+        let denominatorInt = Int(_denominator)
+        statusItem.title = String(numeratorInt) + "/" + String(denominatorInt) + "  " + String(format: "%.3f", ratio) + "%"
+    }
+    
+    @objc func calendarDayDidChange() {
+        updateProgress()
+    }
+    
+    @IBAction func quitClicked(_ sender: NSMenuItem) {
+        NSApplication.shared.terminate(self)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        NotificationCenter.default.addObserver(self, selector:#selector(calendarDayDidChange), name:.NSCalendarDayChanged, object:nil)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        let begin = "1994-04-19"
+        let newStart = "2074-04-19"
+        
+        _beginTI = dateFormatter.date(from: begin)!.timeIntervalSince1970
+        _newStartTI = dateFormatter.date(from: newStart)!.timeIntervalSince1970
+        _denominator = (_newStartTI - _beginTI) / (24 * 3600)
+        
+        updateProgress()
+        
+        statusItem.menu = statusMenu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
