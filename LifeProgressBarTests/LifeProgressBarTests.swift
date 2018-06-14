@@ -2,7 +2,7 @@
 //  LifeProgressBarTests.swift
 //  LifeProgressBarTests
 //
-//  Created by Apple on 2018/6/14.
+//  Created by JacobChengZhang on 2018/6/14.
 //  Copyright © 2018 xor. All rights reserved.
 //
 
