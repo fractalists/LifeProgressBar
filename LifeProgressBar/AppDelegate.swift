@@ -11,11 +11,11 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var lifeProgressMenu: NSMenu!
     
-    @IBOutlet weak var quitClicked: NSMenuItem!
+    @IBOutlet weak var moveForward: NSMenuItem!
     
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let menuItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     var _born:Double = 0
     var _newStart:Double = 0
@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let ratio = 100 * numerator / _denominator
         
         DispatchQueue.main.async {
-            self.statusItem.title = String(self.timeInterval2Day(ti: numerator)) + "/" + String(self.timeInterval2Day(ti: self._denominator)) + "  " + String(format: "%.3f", ratio) + "%"
+            self.menuItem.title = String(self.timeInterval2Day(ti: numerator)) + "/" + String(self.timeInterval2Day(ti: self._denominator)) + "  " + String(format: "%.3f", ratio) + "%"
         }
     }
     
@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateProgress()
     }
     
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
+    @IBAction func moveForward(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
     
@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         updateProgress()
         
-        statusItem.menu = statusMenu
+        menuItem.menu = lifeProgressMenu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

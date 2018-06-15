@@ -13,8 +13,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="LifeProgressBar" customModuleProvider="target">
             <connections>
-                <outlet property="quitClicked" destination="CPD-bX-adZ" id="yrH-qy-cDd"/>
-                <outlet property="statusMenu" destination="gZ8-gi-oXO" id="yIl-TV-MRG"/>
+                <outlet property="lifeProgressMenu" destination="gZ8-gi-oXO" id="yIl-TV-MRG"/>
+                <outlet property="moveForward" destination="CPD-bX-adZ" id="yrH-qy-cDd"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -26,7 +26,7 @@ Gw
 </string>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitClicked:" target="Voe-Tx-rLC" id="AOJ-QP-477"/>
+                        <action selector="moveForward:" target="Voe-Tx-rLC" id="AOJ-QP-477"/>
                     </connections>
                 </menuItem>
             </items>
