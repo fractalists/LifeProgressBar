@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		181FFB5820D20245006B7997 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FFB5720D20245006B7997 /* AppDelegate.swift */; };
 		181FFB5A20D2024B006B7997 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181FFB5920D2024B006B7997 /* Assets.xcassets */; };
 		181FFB5D20D2024B006B7997 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181FFB5B20D2024B006B7997 /* MainMenu.xib */; };
 		181FFB6920D2024C006B7997 /* LifeProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FFB6820D2024C006B7997 /* LifeProgressBarTests.swift */; };
 		181FFB7420D2024C006B7997 /* LifeProgressBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FFB7320D2024C006B7997 /* LifeProgressBarUITests.swift */; };
+		188F9B2A20D3927F00455876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F9B2920D3927F00455876 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		181FFB5420D20245006B7997 /* LifeProgressBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeProgressBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		181FFB5720D20245006B7997 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		181FFB5920D2024B006B7997 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181FFB5C20D2024B006B7997 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		181FFB5E20D2024B006B7997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		181FFB6F20D2024C006B7997 /* LifeProgressBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeProgressBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181FFB7320D2024C006B7997 /* LifeProgressBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeProgressBarUITests.swift; sourceTree = "<group>"; };
 		181FFB7520D2024C006B7997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188F9B2920D3927F00455876 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 		181FFB5620D20245006B7997 /* LifeProgressBar */ = {
 			isa = PBXGroup;
 			children = (
-				181FFB5720D20245006B7997 /* AppDelegate.swift */,
+				188F9B2920D3927F00455876 /* AppDelegate.swift */,
 				181FFB5920D2024B006B7997 /* Assets.xcassets */,
 				181FFB5B20D2024B006B7997 /* MainMenu.xib */,
 				181FFB5E20D2024B006B7997 /* Info.plist */,
@@ -189,6 +189,7 @@
 				TargetAttributes = {
 					181FFB5320D20245006B7997 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 					181FFB6320D2024C006B7997 = {
 						CreatedOnToolsVersion = 9.4;
@@ -251,7 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				181FFB5820D20245006B7997 /* AppDelegate.swift in Sources */,
+				188F9B2A20D3927F00455876 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LifeProgressBar/LifeProgressBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -427,6 +429,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = space.xor.LifeProgressBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -435,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LifeProgressBar/LifeProgressBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
