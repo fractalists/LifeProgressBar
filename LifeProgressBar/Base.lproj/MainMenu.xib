@@ -21,8 +21,9 @@
         <menu id="gZ8-gi-oXO" userLabel="StatusMenu">
             <items>
                 <menuItem title="Move Forward" id="CPD-bX-adZ" userLabel="MoveForwardClicked">
+                    <attributedString key="attributedTitle"/>
                     <string key="keyEquivalent" base64-UTF8="YES">
-Gw
+CA
 </string>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -30,7 +31,7 @@ Gw
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-185" y="121.5"/>
+            <point key="canvasLocation" x="-368.5" y="165.5"/>
         </menu>
     </objects>
 </document>
