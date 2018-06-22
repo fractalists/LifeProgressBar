@@ -15,23 +15,26 @@
             <connections>
                 <outlet property="lifeProgressMenu" destination="gZ8-gi-oXO" id="yIl-TV-MRG"/>
                 <outlet property="moveForward" destination="CPD-bX-adZ" id="yrH-qy-cDd"/>
+                <outlet property="preferences" destination="IfB-SO-JLc" id="vy9-kI-LDZ"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="gZ8-gi-oXO" userLabel="StatusMenu">
             <items>
-                <menuItem title="Move Forward" id="CPD-bX-adZ" userLabel="MoveForwardClicked">
+                <menuItem title="Preferences..." keyEquivalent="," id="IfB-SO-JLc">
                     <attributedString key="attributedTitle"/>
-                    <string key="keyEquivalent" base64-UTF8="YES">
-CA
-</string>
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="configPreferences:" target="Voe-Tx-rLC" id="oze-nL-g0w"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Move Forward" keyEquivalent="q" id="CPD-bX-adZ" userLabel="MoveForwardClicked">
+                    <attributedString key="attributedTitle"/>
                     <connections>
                         <action selector="moveForward:" target="Voe-Tx-rLC" id="AOJ-QP-477"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-368.5" y="165.5"/>
+            <point key="canvasLocation" x="7.5" y="164.5"/>
         </menu>
     </objects>
 </document>

@@ -12,8 +12,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var lifeProgressMenu: NSMenu!
-    
     @IBOutlet weak var moveForward: NSMenuItem!
+    @IBOutlet weak var preferences: NSMenuItem!
     
     let menuItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
@@ -39,10 +39,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateProgress()
     }
     
+    @objc func anime() {
+        var initTitle: String = ""
+        DispatchQueue.main.sync {
+            initTitle = self.menuItem.title!
+        }
+        let charCount = initTitle.count
+        
+        for _ in 1...charCount {
+            DispatchQueue.main.async {
+                let str = self.menuItem.title!
+                self.menuItem.title = String(str.dropFirst() + str.prefix(1))
+            }
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+    }
+    
+    @IBAction func configPreferences(_ sender: NSMenuItem) {
+        let animeThread: Thread = Thread(target: self, selector: #selector(AppDelegate.anime), object: nil)
+        animeThread.start()
+    }
+    
     @IBAction func moveForward(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NotificationCenter.default.addObserver(self, selector:#selector(calendarDayDidChange), name:.NSCalendarDayChanged, object:nil)
         
