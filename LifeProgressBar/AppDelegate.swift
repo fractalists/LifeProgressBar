@@ -33,15 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let ratio = 100 * numerator / _denominator
         
         DispatchQueue.main.async {
-            self.menuItem.title = String(self.timeInterval2Day(ti: numerator)) + "/" + String(self.timeInterval2Day(ti: self._denominator)) + "  " + String(format: "%.3f", ratio) + "%"
+            self.menuItem.title = String(self.timeInterval2Day(ti: numerator)) + "/" + String(self.timeInterval2Day(ti: self._denominator)) + " " + String(format: "%.3f", ratio) + "%"
         }
     }
     
-    @objc func calendarDayDidChange() {
-        updateProgress()
-    }
-    
-    @IBAction func configPreferences(_ sender: NSMenuItem) {
+    func anime() {
         DispatchQueue.global().async {
             var initTitle: String = ""
             DispatchQueue.main.sync {
@@ -49,14 +45,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             let charCount = initTitle.count
             
-            for _ in 1...charCount {
+            for i in 1...charCount {
+                Thread.sleep(forTimeInterval: 1.0 / Double(i))
                 DispatchQueue.main.async {
                     let str = self.menuItem.title!
-                    self.menuItem.title = String(str.dropFirst() + str.prefix(1))
+                    self.menuItem.title = String(String(str.last!) + str.dropLast())
                 }
-                Thread.sleep(forTimeInterval: 0.1)
             }
         }
+    }
+    
+    @objc func calendarDayDidChange() {
+        updateProgress()
+        anime()
+    }
+    
+    @IBAction func configPreferences(_ sender: NSMenuItem) {
+        anime()
     }
     
     @IBAction func moveForward(_ sender: NSMenuItem) {
@@ -79,8 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateProgress()
         
         menuItem.menu = lifeProgressMenu
-        let font = menuItem.button!.font!
-        menuItem.button!.font = NSFont(name: "Menlo", size: font.pointSize)
+        menuItem.button!.font = NSFont(name: "Menlo", size: menuItem.button!.font!.pointSize)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
