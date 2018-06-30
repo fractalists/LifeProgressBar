@@ -79,6 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateProgress()
         
         menuItem.menu = lifeProgressMenu
+        let font = menuItem.button!.font!
+        menuItem.button!.font = NSFont(name: "Menlo", size: font.pointSize)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
