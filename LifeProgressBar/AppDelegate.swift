@@ -45,8 +45,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             let charCount = initTitle.count
             
-            for i in 1...charCount {
-                Thread.sleep(forTimeInterval: 1.0 / Double(i))
+            for i in 1...(charCount * 10) {
+                Thread.sleep(forTimeInterval: 2.0 / Double(i))
+                DispatchQueue.main.async {
+                    let str = self.menuItem.title!
+                    self.menuItem.title = String(String(str.last!) + str.dropLast())
+                }
+            }
+            for i in 1...(charCount * 5) {
+                Thread.sleep(forTimeInterval: 2.0 / Double(2 * (charCount * 5 + 1 - i)))
                 DispatchQueue.main.async {
                     let str = self.menuItem.title!
                     self.menuItem.title = String(String(str.last!) + str.dropLast())
