@@ -19,7 +19,7 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <menu id="gZ8-gi-oXO" userLabel="StatusMenu">
+        <menu autoenablesItems="NO" id="gZ8-gi-oXO" userLabel="StatusMenu">
             <items>
                 <menuItem title="Preferences..." keyEquivalent="," id="IfB-SO-JLc">
                     <attributedString key="attributedTitle"/>
